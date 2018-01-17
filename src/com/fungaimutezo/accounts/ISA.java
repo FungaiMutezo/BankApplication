@@ -11,10 +11,12 @@ public class ISA extends PersonalSaver {
         ISA.interestRate = interestRate;
     }
 
+    @Override
     public void updateInterestRate() {
         interestRate = updateInterestRate(interestRate);
     }
 
+    @Override
     public void applyInterestRate() {
         applyInterestRate(interestRate);
     }

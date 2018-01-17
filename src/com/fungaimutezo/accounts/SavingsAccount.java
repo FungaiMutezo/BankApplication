@@ -9,6 +9,7 @@ public class SavingsAccount extends PersonalSaver {
         this.interestRate = interestRate;
     }
 
+    @Override
     public void updateInterestRate() {
         interestRate = updateInterestRate(interestRate);
     }
@@ -17,6 +18,7 @@ public class SavingsAccount extends PersonalSaver {
         this.interestRate = interestRate;
     }
 
+    @Override
     public void applyInterestRate() {
         applyInterestRate(interestRate);
     }

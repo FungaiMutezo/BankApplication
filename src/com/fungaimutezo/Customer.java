@@ -1,9 +1,7 @@
 package com.fungaimutezo;
 
 import com.fungaimutezo.accounts.BankAccount;
-import com.fungaimutezo.accounts.ISA;
-import com.fungaimutezo.accounts.SavingsAccount;
-import com.sun.deploy.util.ArrayUtil;
+import com.fungaimutezo.accounts.PersonalSaver;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,10 +42,8 @@ public class Customer {
 
     public void applyInterestRate() {
         for(BankAccount account : accounts) {
-            if(account instanceof SavingsAccount) {
-                ((SavingsAccount) account).applyInterestRate();
-            } else if(account instanceof ISA) {
-                ((ISA) account).applyInterestRate();
+            if(account instanceof PersonalSaver) {
+                ((PersonalSaver) account).applyInterestRate();
             }
         }
     }

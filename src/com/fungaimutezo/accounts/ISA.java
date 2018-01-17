@@ -21,4 +21,8 @@ public class ISA extends PersonalSaver {
         return "Account-Type: ISA\nInterest-Rate: " + interestRate +
                 "\n" + super.toString();
     }
+
+    public static float getInterestRate() {
+        return interestRate;
+    }
 }

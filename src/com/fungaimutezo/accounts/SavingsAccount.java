@@ -23,4 +23,8 @@ public class SavingsAccount extends PersonalSaver {
         return "Account-Type: Savings-Account\nInterest-Rate: " + interestRate +
                 "\n" + super.toString();
     }
+
+    public float getInterestRate() {
+        return interestRate;
+    }
 }

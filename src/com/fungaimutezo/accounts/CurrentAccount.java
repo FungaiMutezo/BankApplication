@@ -69,4 +69,12 @@ public class CurrentAccount extends BankAccount {
                 "\nOverdraft-Charge-Rate: " + overdraftChargesInterestRate +
                 "\n" + super.toString();
     }
+
+    public float getMaxOverdraft() {
+        return maxOverdraft;
+    }
+
+    public float getOverdraftChargesInterestRate() {
+        return overdraftChargesInterestRate;
+    }
 }

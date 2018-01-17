@@ -41,4 +41,20 @@ public abstract class BankAccount {
                 "\nAccount-Number: " + accountNumber +
                 "\nBalance: " + balance;
     }
+
+    public int getUID() {
+        return UID;
+    }
+
+    public String getSortCode() {
+        return sortCode;
+    }
+
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    public float getBalance() {
+        return balance;
+    }
 }

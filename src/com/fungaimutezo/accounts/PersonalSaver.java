@@ -14,6 +14,14 @@ public abstract class PersonalSaver extends BankAccount {
         }
     }
 
+    /**
+     * Since subclasses have different ways to save interest rates (ISA - static, SavingsAccount - per object)
+     * it can't be stored in this class. Through implementation of this method we can still gain access to
+     * this functionality even when using polymorphism.
+     *
+     * E.g. PersonalSaver personalSaver = new SavingsAccount(...)
+     * personalSaver.applyInterestRate();
+     */
     public abstract void applyInterestRate();
 
     protected void applyInterestRate(float interestRate) {

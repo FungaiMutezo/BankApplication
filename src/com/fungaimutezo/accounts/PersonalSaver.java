@@ -14,12 +14,6 @@ public abstract class PersonalSaver extends BankAccount {
         }
     }
 
-    public abstract void updateInterestRate();
-
-    protected float updateInterestRate(float interestRate) {
-        return balance + (balance * (interestRate / 100));
-    }
-
     public abstract void applyInterestRate();
 
     protected void applyInterestRate(float interestRate) {

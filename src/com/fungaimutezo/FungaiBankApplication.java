@@ -1,6 +1,5 @@
 package com.fungaimutezo;
 
-import com.fungaimutezo.accounts.BankAccount;
 import com.fungaimutezo.accounts.CurrentAccount;
 import com.fungaimutezo.accounts.ISA;
 import com.fungaimutezo.accounts.SavingsAccount;
@@ -11,6 +10,11 @@ public class FungaiBankApplication {
     }
 
     public FungaiBankApplication() {
+
+    }
+
+    // Run to see 100% code coverage.
+    private void hundredPercentRun() {
         CurrentAccount current = new CurrentAccount("ab",1, 0);
         ISA isa1 = new ISA("bc",2);
         ISA isa2 = new ISA("cd",3);
@@ -48,9 +52,7 @@ public class FungaiBankApplication {
 
         System.out.println("--- OVERDRAFT CURRENT-ACCOUNT OVER LIMIT");
 
-        if(!current.withdrawFunds(200)) {
-            System.out.println("ERROR: Tried to exceed overdraft limit.\n");
-        }
+        current.withdrawFunds(200);
 
         System.out.println(current + "\n\n");
 
@@ -58,9 +60,7 @@ public class FungaiBankApplication {
 
         current.setOverdraftData(2500,15);
 
-        if(!current.withdrawFunds(200)) {
-            System.out.println("ERROR: Tried to exceed overdraft limit.\n");
-        }
+        current.withdrawFunds(200);
 
         System.out.println(current + "\n\n");
 
@@ -77,5 +77,19 @@ public class FungaiBankApplication {
         boolean douplicate = customer2.addAccount(isa1);
 
         System.out.println("Duplicate possible: " + douplicate);
+
+        CurrentAccount currentAccount = new CurrentAccount("gh", 6,200,100);
+        currentAccount.withdrawFunds(300);
+        System.out.println(currentAccount + "\n\n");
+
+        currentAccount.setMaxOverdraft(300);
+        currentAccount.withdrawFunds(300);
+        System.out.println(currentAccount + "\n\n");
+
+        currentAccount.setOverdraftChargesInterestRate(20);
+        System.out.println(currentAccount.calculateOvedraftCharges());
+
+        savings1.setInterestRate(30);
+        System.out.println(savings1);
     }
 }

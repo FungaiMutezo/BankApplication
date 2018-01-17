@@ -12,11 +12,6 @@ public class ISA extends PersonalSaver {
     }
 
     @Override
-    public void updateInterestRate() {
-        interestRate = updateInterestRate(interestRate);
-    }
-
-    @Override
     public void applyInterestRate() {
         applyInterestRate(interestRate);
     }

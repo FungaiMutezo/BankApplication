@@ -20,24 +20,18 @@ public abstract class BankAccount {
      * Method to deposit money (increase balance).
      *
      * @param amount The amount of money to deposit.
-     * @return If the operation was successful.
      */
-    public boolean depositFunds(float amount) {
+    public void depositFunds(float amount) {
         balance += amount;
-
-        return true;
     }
 
     /**
      * Method to withdraw money (decrease balance).
      *
      * @param amount The amount of money to withdraw.
-     * @return If the operation was successful.
      */
-    public boolean withdrawFunds(float amount) {
+    public void withdrawFunds(float amount) {
         balance -= amount;
-
-        return true;
     }
 
     @Override

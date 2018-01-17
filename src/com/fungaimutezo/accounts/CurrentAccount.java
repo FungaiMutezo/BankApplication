@@ -24,14 +24,12 @@ public class CurrentAccount extends BankAccount {
     }
 
     @Override
-    public boolean withdrawFunds(float amount) {
-        boolean withdrawSuccessful = false;
-
+    public void withdrawFunds(float amount) {
         if(balance + maxOverdraft >= amount) {
-            withdrawSuccessful = super.withdrawFunds(amount);
+            super.withdrawFunds(amount);
+        } else {
+            super.withdrawFunds(balance + maxOverdraft);
         }
-
-        return withdrawSuccessful;
     }
 
     public float calculateOvedraftCharges() {

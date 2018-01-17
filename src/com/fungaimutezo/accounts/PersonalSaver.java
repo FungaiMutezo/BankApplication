@@ -6,14 +6,12 @@ public abstract class PersonalSaver extends BankAccount {
     }
 
     @Override
-    public boolean withdrawFunds(float amount) {
-        boolean withdrawSuccessful = false;
-
+    public void withdrawFunds(float amount) {
         if(balance >= amount) {
-            withdrawSuccessful = super.withdrawFunds(amount);
+            super.withdrawFunds(amount);
+        } else {
+            super.withdrawFunds(balance);
         }
-
-        return withdrawSuccessful;
     }
 
     public abstract void updateInterestRate();

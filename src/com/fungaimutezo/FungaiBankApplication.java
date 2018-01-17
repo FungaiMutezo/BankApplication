@@ -10,86 +10,58 @@ public class FungaiBankApplication {
     }
 
     public FungaiBankApplication() {
+        // Test page 1 of specification document
+        System.out.println("TESTING: Savings-Account");
+        SavingsAccount savingsAccount = new SavingsAccount("abc",1,14.5f);
+        System.out.println("Initial balance: " + savingsAccount.getBalance());
+        savingsAccount.depositFunds(100);
+        System.out.println("Balance after deposit (100): " + savingsAccount.getBalance());
+        savingsAccount.applyInterestRate();
+        System.out.println("Balance after applied interest rate (14.5): " + savingsAccount.getBalance());
+        savingsAccount.withdrawFunds(200);
+        System.out.println("Balance after withdraw (200): " + savingsAccount.getBalance());
+        savingsAccount.setInterestRate(30);
+        System.out.println("Changed interest rate from 14.5 to: " + savingsAccount.getInterestRate());
+        savingsAccount.depositFunds(100);
+        System.out.println("Balance after deposit (100): " + savingsAccount.getBalance());
 
-    }
+        System.out.println("\nTESTING: Current-Account");
+        CurrentAccount currentAccountNoOverdraft = new CurrentAccount("bcd",2);
+        System.out.println("Current-Account without overdraft: " + currentAccountNoOverdraft.getMaxOverdraft());
+        currentAccountNoOverdraft.withdrawFunds(100);
+        System.out.println("After withdrawal (100): " + currentAccountNoOverdraft.getBalance());
 
-    // Run to see 100% code coverage.
-    private void hundredPercentRun() {
-        CurrentAccount current = new CurrentAccount("ab",1, 0);
-        ISA isa1 = new ISA("bc",2);
-        ISA isa2 = new ISA("cd",3);
-        SavingsAccount savings1 = new SavingsAccount("de",4,10);
-        SavingsAccount savings2 = new SavingsAccount("ef",5,20);
+        System.out.println("Switching to Current-Account with overdraft...");
+        CurrentAccount currentAccount = new CurrentAccount("bcd",2, 14.5f);
+        currentAccount.withdrawFunds(3000);
+        System.out.println("After withdrawal (3000): " + currentAccount.getBalance());
+        System.out.println("Overdraft charges (14.5 percent): " + currentAccount.calculateOverdraftCharges());
+        currentAccount.setOverdraftChargesInterestRate(100);
+        System.out.println("Overdraft charges (100 percent): " + currentAccount.calculateOverdraftCharges());
 
-        // Accounts can also be passed as an array (BankAccount[])
-        Customer customer = new Customer("Fungai", "Mutezo", current, isa1, isa2, savings1, savings2);
-        System.out.println("--- INITIAL CONFIGURATION ---");
-        System.out.println(customer);
-
-        System.out.println("--- ADD FUNDS ---");
-        current.depositFunds(100);
+        System.out.println("\nTESTING: ISA-Account");
+        ISA isa1 = new ISA("cde",3);
+        ISA isa2 = new ISA("def",4);
+        System.out.println("After withdrawal (100 - isa1): " + isa1.getBalance());
         isa1.depositFunds(100);
         isa2.depositFunds(100);
-        savings1.depositFunds(100);
-        savings2.depositFunds(100);
-        System.out.println(customer);
-
-        System.out.println("--- APPLY INTEREST RATE ---");
-        customer.applyInterestRate();
-        System.out.println(customer);
-
-        System.out.println("--- REMOVE INTEREST RATE ---");
+        System.out.println("After deposit (100 - isa1): " + isa1.getBalance());
+        isa1.applyInterestRate();
+        System.out.println("After applying interest rate (isa1): " + isa1.getBalance());
         isa1.withdrawFunds(14.5f);
-        isa2.withdrawFunds(14.5f);
-        savings1.withdrawFunds(10.0f);
-        savings2.withdrawFunds(20.0f);
-        System.out.println(customer);
+        System.out.println("Withdraw interest rate (isa1): " + isa1.getBalance());
+        ISA.setInterestRate(30);
+        isa1.applyInterestRate();
+        isa2.applyInterestRate();
+        System.out.println("Change interest rate to 30 and apply (isa1, isa2): " + isa1.getBalance() + ", " + isa2.getBalance());
 
-        System.out.println("--- CHANGE ISA RATE AND APPLY ---");
-        ISA.setInterestRate(25);
+        // Test page 2 of specification document
+        System.out.println("\n\nTESTING: Customer");
+        Customer customer = new Customer("Test", "User", savingsAccount, currentAccount, isa1, isa2);
+        System.out.println("--- Accounts added ---");
+        System.out.println(customer);
+        System.out.println("--- Update interest for customer ---");
         customer.applyInterestRate();
         System.out.println(customer);
-
-        System.out.println("--- OVERDRAFT CURRENT-ACCOUNT OVER LIMIT");
-
-        current.withdrawFunds(200);
-
-        System.out.println(current + "\n\n");
-
-        System.out.println("--- ADJUST OVERDRAFT LIMIT AND TRY AGAIN");
-
-        current.setOverdraftData(2500,15);
-
-        current.withdrawFunds(200);
-
-        System.out.println(current + "\n\n");
-
-        System.out.println(" --- APPLY OVERDRAFT FEES ---");
-
-        current.withdrawFunds(current.calculateOvedraftCharges());
-
-        System.out.println(current + "\n\n");
-
-        // Additional testing
-        Customer customer2 = new Customer("Test", "Customer");
-        customer2.addAccount(isa1);
-
-        boolean douplicate = customer2.addAccount(isa1);
-
-        System.out.println("Duplicate possible: " + douplicate);
-
-        CurrentAccount currentAccount = new CurrentAccount("gh", 6,200,100);
-        currentAccount.withdrawFunds(300);
-        System.out.println(currentAccount + "\n\n");
-
-        currentAccount.setMaxOverdraft(300);
-        currentAccount.withdrawFunds(300);
-        System.out.println(currentAccount + "\n\n");
-
-        currentAccount.setOverdraftChargesInterestRate(20);
-        System.out.println(currentAccount.calculateOvedraftCharges());
-
-        savings1.setInterestRate(30);
-        System.out.println(savings1);
     }
 }

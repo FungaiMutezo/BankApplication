@@ -1,5 +1,10 @@
 package com.fungaimutezo.accounts;
 
+/**
+ * Superclass for all Classes representing personal saving accounts.
+ * Personal saving accounts can't withdraw more than the available
+ * balance and have an applicable interest rate.
+ */
 public abstract class PersonalSaver extends BankAccount {
     public PersonalSaver(String sortCode, int accountNumber) throws IllegalArgumentException {
         super(sortCode, accountNumber);

@@ -37,7 +37,7 @@ public class FungaiBankApplication {
             currentAccount.withdrawFunds(3000);
             System.out.println("After withdrawal (3000): " + currentAccount.getBalance());
             System.out.println("Overdraft charges (14.5 percent): " + currentAccount.calculateOverdraftCharges());
-            currentAccount.setOverdraftChargesInterestRate(100);
+            currentAccount.setOverdraftFee(100);
             System.out.println("Overdraft charges (100 percent): " + currentAccount.calculateOverdraftCharges());
 
             System.out.println("\nTESTING: ISA-Account");

@@ -28,12 +28,12 @@ public class FungaiBankApplication {
 
             System.out.println("\nTESTING: Current-Account");
             CurrentAccount currentAccountNoOverdraft = new CurrentAccount("abcdef",12345678);
-            System.out.println("Current-Account without overdraft: " + currentAccountNoOverdraft.getMaxOverdraft());
+            System.out.println("Current-Account without overdraft: " + currentAccountNoOverdraft.getOverdraft());
             currentAccountNoOverdraft.withdrawFunds(100);
             System.out.println("After withdrawal (100): " + currentAccountNoOverdraft.getBalance());
 
             System.out.println("Switching to Current-Account with overdraft...");
-            CurrentAccount currentAccount = new CurrentAccount("abcdef",12345678, 14.5f);
+            CurrentAccount currentAccount = new CurrentAccount("abcdef",12345678,100,14.5f);
             currentAccount.withdrawFunds(3000);
             System.out.println("After withdrawal (3000): " + currentAccount.getBalance());
             System.out.println("Overdraft charges (14.5 percent): " + currentAccount.calculateOverdraftCharges());
@@ -65,6 +65,7 @@ public class FungaiBankApplication {
             customer.applyInterestRate();
             System.out.println(customer);
         } catch (IllegalArgumentException e) {
+            System.out.println("\nTestet ended early with message:");
             System.out.println(e.getMessage());
         }
     }

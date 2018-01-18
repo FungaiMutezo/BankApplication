@@ -19,7 +19,7 @@ public class CurrentAccount extends BankAccount {
         if(overdraft < 0 || overdraftChargesInterestRate < 0) {
             throw new IllegalArgumentException("Overdraft and charge rate must be greater than zero.");
         } else if(overdraft > MAX_ALLOWED_OVERDRAFT_VALUE) {
-            throw new IllegalArgumentException("Overdraft can't be higher than 2500.");
+            throw new IllegalArgumentException("Overdraft can't be higher than " + MAX_ALLOWED_OVERDRAFT_VALUE + ".");
         }
 
         this.overdraft = overdraft;

@@ -12,7 +12,7 @@ public class CurrentAccount extends BankAccount {
         maxOverdraft = 0;
     }
 
-    public CurrentAccount(String sortCode, int accountNumber, float overdraftChargesInterestRate) {
+    public CurrentAccount(String sortCode, int accountNumber, float overdraftChargesInterestRate) throws IllegalArgumentException {
         super(sortCode, accountNumber);
 
         if(overdraftChargesInterestRate < 0) {

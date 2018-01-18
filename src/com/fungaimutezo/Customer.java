@@ -52,10 +52,24 @@ public class Customer {
     public String toString() {
         StringBuilder data = new StringBuilder();
 
+        data.append("Report for: ").append(firstName).append(" ").append(lastName).append("\n");
+
         for(BankAccount account : accounts) {
             data.append(account).append("\n\n");
         }
 
         return data.toString();
+    }
+
+    public int getUID() {
+        return UID;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 }

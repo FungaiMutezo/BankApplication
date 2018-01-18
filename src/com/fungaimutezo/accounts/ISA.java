@@ -7,7 +7,11 @@ public class ISA extends PersonalSaver {
         super(sortCode, accountNumber);
     }
 
-    public static void setInterestRate(float interestRate) {
+    public static void setInterestRate(float interestRate) throws IllegalArgumentException {
+        if(interestRate < 0) {
+            throw new IllegalArgumentException("Interest rates must be greater than zero.");
+        }
+
         ISA.interestRate = interestRate;
     }
 

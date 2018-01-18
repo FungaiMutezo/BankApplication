@@ -36,10 +36,12 @@ public class CurrentAccount extends BankAccount {
         }
     }
 
-    public void setOverdraftChargesInterestRate(float overdraftChargesInterestRate) {
+    public void setOverdraftChargesInterestRate(float overdraftChargesInterestRate) throws IllegalArgumentException {
         if(maxOverdraft == 0) {
             System.out.println("ERROR: Max. overdraft must be filled.");
             return;
+        } else if(overdraftChargesInterestRate < 0) {
+            throw new IllegalArgumentException("Interest rates must be greater than zero.");
         }
 
         this.overdraftChargesInterestRate = overdraftChargesInterestRate;

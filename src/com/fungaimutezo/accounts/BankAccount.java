@@ -9,9 +9,15 @@ public abstract class BankAccount {
 
     protected float balance;
 
-    public BankAccount(String sortCode, int accountNumber) {
+    public BankAccount(String sortCode, int accountNumber) throws IllegalArgumentException {
         this.sortCode = sortCode;
         this.accountNumber = accountNumber;
+
+        if(sortCode.length() != 6) {
+            throw new IllegalArgumentException("Sortcode requires 6 digits.");
+        } else if(String.valueOf(accountNumber).length() != 8) {
+            throw new IllegalArgumentException("Accountnumber requires 8 digits.");
+        }
 
         UID = UIDGenerator.generateUID();
     }

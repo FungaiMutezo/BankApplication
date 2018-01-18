@@ -15,6 +15,10 @@ public class CurrentAccount extends BankAccount {
     public CurrentAccount(String sortCode, int accountNumber, float overdraftChargesInterestRate) {
         super(sortCode, accountNumber);
 
+        if(overdraftChargesInterestRate < 0) {
+            throw new IllegalArgumentException("Interest rates must be greater than zero.");
+        }
+
         this.maxOverdraft = 2500;
         this.overdraftChargesInterestRate = overdraftChargesInterestRate;
     }

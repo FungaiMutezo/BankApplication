@@ -1,7 +1,7 @@
 package com.fungaimutezo.accounts;
 
 public abstract class PersonalSaver extends BankAccount {
-    public PersonalSaver(String sortCode, int accountNumber) {
+    public PersonalSaver(String sortCode, int accountNumber) throws IllegalArgumentException {
         super(sortCode, accountNumber);
     }
 

@@ -9,7 +9,7 @@ public abstract class BankAccount {
 
     protected float balance;
 
-    public BankAccount(String sortCode, int accountNumber) throws IllegalArgumentException {
+    protected BankAccount(String sortCode, int accountNumber) throws IllegalArgumentException {
         this.sortCode = sortCode;
         this.accountNumber = accountNumber;
 

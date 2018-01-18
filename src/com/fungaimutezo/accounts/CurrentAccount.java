@@ -6,7 +6,7 @@ public class CurrentAccount extends BankAccount {
     private final float maxOverdraft;
     private float overdraftChargesInterestRate;
 
-    public CurrentAccount(String sortCode, int accountNumber) {
+    public CurrentAccount(String sortCode, int accountNumber) throws IllegalArgumentException {
         super(sortCode, accountNumber);
 
         maxOverdraft = 0;

@@ -3,7 +3,7 @@ package com.fungaimutezo.accounts;
 public class ISA extends PersonalSaver {
     private static float interestRate = 14.5f;
 
-    public ISA(String sortCode, int accountNumber) {
+    public ISA(String sortCode, int accountNumber) throws IllegalArgumentException {
         super(sortCode, accountNumber);
     }
 
